@@ -20,7 +20,7 @@ def readValue(address,register):
 		value = bus.read_byte_data(address,2)
 		return value	
 	except IOError:
-		return 0
+		return "Fel i sändningen"
 	
 while True:
 	print readValue(DEVICE_ADDRESS,0)
