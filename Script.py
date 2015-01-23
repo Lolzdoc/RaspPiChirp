@@ -13,7 +13,7 @@ bus.write_byte(DEVICE_ADDRESS,6)
 
 def readValue(address,register):
 	bus.write_byte(address,register)
-	time.sleep(.02)
+	time.sleep(.1)
 	value = bus.read_byte_data(address,2)
 	return value	
 
