@@ -14,9 +14,11 @@ bus.write_byte(DEVICE_ADDRESS,6)
 def readValue(address,register):
 	bus.write_byte(address,register)
 	time.sleep(.1)
-	value = bus.read_byte_data(address,2)
-	return value	
-
+	try:
+		value = bus.read_byte_data(address,2)
+		return value	
+	except IOError:
+		return 0
 	
 while True:
 	print readValue(DEVICE_ADDRESS,0)
