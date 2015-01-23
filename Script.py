@@ -10,6 +10,8 @@ DEVICE_REG_MODE1 = 0x00
 
 #Write a single register
 bus.write_byte(DEVICE_ADDRESS,6)
+time.sleep(1)
+
 
 def readValue(address,register):
 	bus.write_byte(address,register)
