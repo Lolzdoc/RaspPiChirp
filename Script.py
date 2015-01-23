@@ -33,4 +33,4 @@ while True:
 		print ""
 		time.sleep(1)
 	except IOError:
-		
+		print "Error"
