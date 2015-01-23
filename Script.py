@@ -25,3 +25,4 @@ while True:
 	print ", "
 	print readValue(DEVICE_ADDRESS,5)
 	print ", slut"
+	time.slut(1)
