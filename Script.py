@@ -12,7 +12,7 @@ DEVICE_REG_MODE1 = 0x00
 bus.write_byte(DEVICE_ADDRESS,6)
 
 def readValue(address,register):
-	bus.write_quick(address)
+	bus.write_byte(address,register)
 	time.sleep(.02)
 	value = bus.read_byte_data(address,2)
 	return value	
