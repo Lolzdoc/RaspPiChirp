@@ -24,5 +24,7 @@ while True:
 	print readValue(DEVICE_ADDRESS,0)
 	print ", "
 	print readValue(DEVICE_ADDRESS,5)
-	print ", slut"
+	print ", "
+	print readValue(DEVICE_ADDRESS,4)
+	print "slut"
 	time.sleep(1)
