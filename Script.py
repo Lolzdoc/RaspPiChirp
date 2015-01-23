@@ -12,8 +12,8 @@ DEVICE_REG_MODE1 = 0x00
 bus.write_byte(DEVICE_ADDRESS,6)
 
 while True:
-	print bus.read_byte_data(DEVICE_ADDRESS,0)
+	print bus.read_byte(DEVICE_ADDRESS,0)
 	print ", "
-	print bus.read_byte_data(DEVICE_ADDRESS,5)
+	print bus.read_byte(DEVICE_ADDRESS,5)
 	print ", slut"
 	time.sleep(.03)
