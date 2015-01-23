@@ -11,7 +11,7 @@ DEVICE_REG_MODE1 = 0x00
 #Write a single register
 bus.write_byte(DEVICE_ADDRESS,6)
 
-def readValue(int address, int register):
+def readValue(address,register):
 	bus.write_quick(address)
 	time.sleep(.02)
 	long value = bus.read_byte(address,2)
