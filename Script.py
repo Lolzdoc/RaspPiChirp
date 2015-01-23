@@ -23,10 +23,13 @@ def readValue(address,register):
 		return "Fel i sandningen"
 	
 while True:
+	print "Fukt varde:"
 	print readValue(DEVICE_ADDRESS,0)
-	print ", "
+	print "Temperatur varde:"
 	print readValue(DEVICE_ADDRESS,5)
-	print ", "
+	bus.write_byte(DEVICE_ADDRESS,3)
+	print "Ljus varde"
 	print readValue(DEVICE_ADDRESS,4)
 	print "slut"
+	print ""
 	time.sleep(1)
