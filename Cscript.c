@@ -20,25 +20,25 @@ void main(void) {
   printf("error opening i2c channel\n\r");
   }
 
-  wiringPiI2CWrite(dID,6);
+  wiringPiI2CWrite(fd,6);
 
 
 
 
-  unsigned int cap = readI2CRegister16bit(dID, 0); //read capacitance register
+  unsigned int cap = readI2CRegister16bit(fd, 0); //read capacitance register
   printf ("Capacitance = ");
   printf("%u",cap);
 
   printf(", ");
 
-  unsigned int temp = readI2CRegister16bit(dID, 5); //temperature register
+  unsigned int temp = readI2CRegister16bit(fd, 5); //temperature register
   printf ("Temperature = ");
   printf("%u",temp);
 
   printf(", ");
-  wiringPiI2CWrite(dID,3); //request light measurement 
+  wiringPiI2CWrite(fd,3); //request light measurement 
 
-  unsigned int light = readI2CRegister16bit(dID, 4); //read light register
+  unsigned int light = readI2CRegister16bit(fd, 4); //read light register
   printf ("Temperature = ");
   printf("%u",light);
 }
