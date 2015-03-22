@@ -24,10 +24,20 @@ void main() {
 
 
 
-  printf(readI2CRegister16bit(dID, 0)); //read capacitance register
+  unsigned int cap = readI2CRegister16bit(dID, 0); //read capacitance register
+  printf ("Capacitance = ");
+  printf("%u",cap);
+
   printf(", ");
-  printf(readI2CRegister16bit(dID, 5)); //temperature register
+
+  unsigned int temp = readI2CRegister16bit(dID, 5); //temperature register
+  printf ("Temperature = ");
+  printf("%u",temp);
+
   printf(", ");
   wiringPiI2CWrite(dID,3); //request light measurement 
-  printf(readI2CRegister16bit(dID, 4)); //read light register
+
+  unsigned int light = readI2CRegister16bit(dID, 4); //read light register
+  printf ("Temperature = ");
+  printf("%u",light);
 }
