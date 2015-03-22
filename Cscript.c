@@ -1,33 +1,31 @@
-#include <Wire.h>
+#include <wiringPi.h>
+#include <wiringPiI2C.h>
 
-void writeI2CRegister8bit(int addr, int value) {
-  Wire.beginTransmission(addr);
-  Wire.write(value);
-  Wire.endTransmission();
-}
 
 unsigned int readI2CRegister16bit(int addr, int reg) {
-  Wire.beginTransmission(addr);
-  Wire.write(reg);
-  Wire.endTransmission();
+  wiringPiI2CWrite(addr,reg);
   delay(20);
-  Wire.requestFrom(addr, 2);
-  unsigned int t = Wire.read() << 8;
-  t = t | Wire.read();
+  unsigned int t = wiringPiI2CReadReg8(addr,reg);
   return t;
 }
 
-void setup() {
-  Wire.begin();
-  Serial.begin(9600);
-  writeI2CRegister8bit(0x20, 6); //reset
-}
 
-void loop() {
-  printf(readI2CRegister16bit(0x20, 0)); //read capacitance register
+void main() {
+  int dID = 0x20;
+
+  if((fd=wiringPiI2CSetup(dID))<0){
+  printf("error opening i2c channel\n\r");
+  }
+
+  wiringPiI2CWrite(dID,6);
+
+
+
+
+  printf(readI2CRegister16bit(dID, 0)); //read capacitance register
   printf(", ");
-  printf(readI2CRegister16bit(0x20, 5)); //temperature register
+  printf(readI2CRegister16bit(dID, 5)); //temperature register
   printf(", ");
-  writeI2CRegister8bit(0x20, 3); //request light measurement 
-  printf(readI2CRegister16bit(0x20, 4)); //read light register
+  wiringPiI2CWrite(dID,3); //request light measurement 
+  printf(readI2CRegister16bit(dID, 4)); //read light register
 }
