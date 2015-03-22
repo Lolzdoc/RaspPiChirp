@@ -1,5 +1,7 @@
 #include <wiringPi.h>
 #include <wiringPiI2C.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 
 unsigned int readI2CRegister16bit(int addr, int reg) {
@@ -12,7 +14,7 @@ unsigned int readI2CRegister16bit(int addr, int reg) {
 
 void main() {
   int dID = 0x20;
-
+  int fd;
   if((fd=wiringPiI2CSetup(dID))<0){
   printf("error opening i2c channel\n\r");
   }
