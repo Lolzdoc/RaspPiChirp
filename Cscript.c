@@ -2,17 +2,18 @@
 #include <wiringPiI2C.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 
 unsigned int readI2CRegister16bit(int addr, int reg) {
   wiringPiI2CWrite(addr,reg);
-  delay(20);
+  sleep(1);
   unsigned int t = wiringPiI2CReadReg8(addr,reg);
   return t;
 }
 
 
-void main() {
+void main(void) {
   int dID = 0x20;
   int fd;
   if((fd=wiringPiI2CSetup(dID))<0){
